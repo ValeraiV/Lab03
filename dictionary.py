@@ -8,6 +8,8 @@ class Dictionary:
             for parola in file:
                 lista.append(parola.rstrip("\n").lower())
 
+
+
     def printAll(self):
         for i in lista:
             print(i)
