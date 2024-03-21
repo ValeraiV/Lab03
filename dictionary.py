@@ -6,10 +6,11 @@ class Dictionary:
     def loadDictionary(self,path):
         with open(path, "r") as file:
             for parola in file:
-                lista.append(parola.rstrip("\n"))
+                lista.append(parola.rstrip("\n").lower())
 
     def printAll(self):
-        pass
+        for i in lista:
+            print(i)
 
 
     @property

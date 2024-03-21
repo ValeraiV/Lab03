@@ -5,13 +5,41 @@ a = []
 class SpellChecker:
 
     def __init__(self):
-        pass
+        self.a = a
 
     def handleSentence(self, txtIn, language):
         txt = replaceChars(txtIn).split()
         b = "resources/"+language.capitalize()+".txt"
+
+        start_time = time.time()
+        mdic.searchWord(txt, b)
+        end_time = time.time()
+        print("______________________________\nUsing contains:")
         for i in mdic.searchWord(txt, b):
-            print (i)
+            print(i)
+        print("Time elapsed "+str(end_time - start_time)+
+              "\n______________________________\n")
+
+        start_time = time.time()
+        mdic.searchWordLinear(txt, b)
+        end_time = time.time()
+        print("Using Linear search:")
+        for i in mdic.searchWordLinear(txt, b):
+            print(i)
+        print("Time elapsed " + str(end_time - start_time) +
+              "\n______________________________\n")
+
+
+        start_time = time.time()
+        mdic.searchWordDichotomic(txt, b)
+        end_time = time.time()
+        print("Using Dichotomic search:")
+        for i in mdic.searchWordDichotomic(txt, b):
+            print(i)
+        print("Time elapsed " + str(end_time - start_time))
+
+
+
 
 
     def printMenu(self):
