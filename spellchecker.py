@@ -1,14 +1,18 @@
 import time
-
 import multiDictionary as md
-
+mdic = md.MultiDictionary()
+a = []
 class SpellChecker:
 
     def __init__(self):
         pass
 
     def handleSentence(self, txtIn, language):
-        pass
+        txt = replaceChars(txtIn).split()
+        b = "resources/"+language.capitalize()+".txt"
+        for i in mdic.searchWord(txt, b):
+            print (i)
+
 
     def printMenu(self):
         print("______________________________\n" +
@@ -23,4 +27,7 @@ class SpellChecker:
 
 
 def replaceChars(text):
-    pass
+    chars = "\\'*_{}><#+-.!$£%&^;,=-§"
+    for c in chars:
+        text = text.replace(c, "")
+    return text

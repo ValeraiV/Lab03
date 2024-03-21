@@ -1,9 +1,12 @@
+lista = []
 class Dictionary:
     def __init__(self):
-        pass
+        self.lista = lista
 
     def loadDictionary(self,path):
-        pass
+        with open(path, "r") as file:
+            for parola in file:
+                lista.append(parola.rstrip("\n"))
 
     def printAll(self):
         pass
@@ -11,4 +14,4 @@ class Dictionary:
 
     @property
     def dict(self):
-        return self._dict
+        return self.lista

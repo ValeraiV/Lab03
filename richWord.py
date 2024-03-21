@@ -1,3 +1,6 @@
+import dictionary
+dic = dictionary.Dictionary()
+parola = ""
 class RichWord:
     def __init__(self, parola):
         self._parola = parola # this is a string
@@ -5,6 +8,12 @@ class RichWord:
 
     @property
     def corretta(self):
+        a = dic.dict
+        if self._parola in a:
+            self._corretta = True
+        else:
+            self._corretta = False
+
         # print("getter of parola called" )
         return self._corretta
 
