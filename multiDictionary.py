@@ -21,7 +21,6 @@ class MultiDictionary:
             rword = rw.RichWord(i).corretta
             if rword == False:
                 lista.append(i)
-
         return lista
 
     def searchWordLinear(self, words, language):
@@ -35,7 +34,6 @@ class MultiDictionary:
                     parola = True
             if parola == False:
                 lista_errate.append(i)
-
         return lista_errate
 
     def searchWordDichotomic(self, words, language):
