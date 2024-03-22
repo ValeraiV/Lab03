@@ -9,10 +9,8 @@ class MultiDictionary:
     def __init__(self):
         self.dizionario = dic
 
-
     def printDic(self, language ):
         dic.loadDictionary(language)
-
 
     def searchWord(self, words, language):
         dic.loadDictionary(language)

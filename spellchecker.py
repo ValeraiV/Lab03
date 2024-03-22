@@ -29,7 +29,6 @@ class SpellChecker:
         print("Time elapsed " + str(end_time - start_time) +
               "\n______________________________\n")
 
-
         start_time = time.time()
         mdic.searchWordDichotomic(txt, b)
         end_time = time.time()
@@ -52,7 +51,6 @@ class SpellChecker:
               "3. Spagnolo\n" +
               "4. Exit\n" +
               "______________________________\n")
-
 
 def replaceChars(text):
     chars = "\\'*_{}><#+-.!$£%&^;,=-§"
