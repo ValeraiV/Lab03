@@ -12,28 +12,28 @@ class SpellChecker:
         b = "resources/"+language.capitalize()+".txt"
 
         start_time = time.time()
-        mdic.searchWord(txt, b)
+        ricerca = mdic.searchWord(txt, b)
         end_time = time.time()
         print("______________________________\nUsing contains:")
-        for i in mdic.searchWord(txt, b):
+        for i in ricerca:
             print(i)
         print("Time elapsed "+str(end_time - start_time)+
               "\n______________________________\n")
 
         start_time = time.time()
-        mdic.searchWordLinear(txt, b)
+        ricerca_lineare = mdic.searchWordLinear(txt, b)
         end_time = time.time()
         print("Using Linear search:")
-        for i in mdic.searchWordLinear(txt, b):
+        for i in ricerca_lineare:
             print(i)
         print("Time elapsed " + str(end_time - start_time) +
               "\n______________________________\n")
 
         start_time = time.time()
-        mdic.searchWordDichotomic(txt, b)
+        ricerca_dicotomica = mdic.searchWordDichotomic(txt, b)
         end_time = time.time()
         print("Using Dichotomic search:")
-        for i in mdic.searchWordDichotomic(txt, b):
+        for i in ricerca_dicotomica:
             print(i)
         print("Time elapsed " + str(end_time - start_time))
 

@@ -9,7 +9,7 @@ class MultiDictionary:
     def __init__(self):
         self.dizionario = dic
 
-    def printDic(self, language ):
+    def printDic(self, language):
         dic.loadDictionary(language)
 
     def searchWord(self, words, language):
@@ -24,10 +24,10 @@ class MultiDictionary:
     def searchWordLinear(self, words, language):
         dic.loadDictionary(language)
         lista_errate = []
-        a = dic.dict
-        parola = False
+        diz = dic.dict
         for i in words:
-            for j in a:
+            parola = False
+            for j in diz:
                 if j == i:
                     parola = True
             if parola == False:
@@ -37,22 +37,23 @@ class MultiDictionary:
     def searchWordDichotomic(self, words, language):
         dic.loadDictionary(language)
         lista_errate = []
-        lista_parole = dic.dict
 
         for i in words:
-            while len(lista_parole) != 0:
-                mid_index = int(len(lista_parole)/2)
-                if i<lista_parole[mid_index]:
-                    del lista_parole[mid_index:]
-                elif i>lista_parole[mid_index]:
-                    del lista_parole[:mid_index]
-                elif i==lista_parole[mid_index]:
-                    lista_parole.clear()
+            start = 0
+            end = len(dic.dict)
+            parola = False
 
-                if len(lista_parole)==1:
-                    if lista_parole[0]!=i:
-                        lista_errate.append(i)
-                    lista_parole.pop(0)
+            while (start != end) and parola != True:
+                media = start + int((end - start) / 2)
+                parola_corrente = dic.dict[media]
+                if i == parola_corrente:
+                    parola = True
+                elif i > parola_corrente:  # in python < applied to strings gives True if the first string is before in lexicographic order
+                    start = media + 1
+                else:
+                    end = media
+
+            if parola == False:
+                lista_errate.append(i)
+
         return lista_errate
-
-
