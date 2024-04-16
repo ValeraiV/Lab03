@@ -24,7 +24,7 @@ class MultiDictionary:
     def searchWordLinear(self, words, language):
         dic.loadDictionary(language)
         lista_errate = []
-        diz = dic.dict
+        diz = dic.dict.copy()
         for i in words:
             parola = False
             for j in diz:
@@ -39,21 +39,18 @@ class MultiDictionary:
         lista_errate = []
 
         for i in words:
-            start = 0
-            end = len(dic.dict)
-            parola = False
+            lista_parole = dic.dict.copy()
+            while len(lista_parole) != 0:
+                mid_index = int(len(lista_parole)/2)
+                if i<lista_parole[mid_index]:
+                    del lista_parole[mid_index:]
+                elif i>lista_parole[mid_index]:
+                    del lista_parole[:mid_index]
+                elif i==lista_parole[mid_index]:
+                    lista_parole.clear()
 
-            while (start != end) and parola != True:
-                media = start + int((end - start) / 2)
-                parola_corrente = dic.dict[media]
-                if i == parola_corrente:
-                    parola = True
-                elif i > parola_corrente:  # in python < applied to strings gives True if the first string is before in lexicographic order
-                    start = media + 1
-                else:
-                    end = media
-
-            if parola == False:
-                lista_errate.append(i)
-
+                if len(lista_parole)==1:
+                    if lista_parole[0]!=i:
+                        lista_errate.append(i)
+                    lista_parole.pop(0)
         return lista_errate
